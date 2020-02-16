@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>{{ user.nickname }}用户信息</title>
+{% endblock %}
+{% block content %}
+<div>
+    <ul>
+        <li><img src={{ url_for('static',filename='pic/userhead/'+user.icon) }} width="60" height="60"></li>
+        <li>用户名：{{ user.username }}</li>
+        {% if user == current_user %}
+        <li><a href="{{ url_for('user.icon') }}">修改头像</a></li>
+        <li><a href={{ url_for('user.password') }}>修改密码</a></li>
+        <li><a href="{{ url_for('video.upload') }}">上传视频</a></li>
+        <li><a href="{{ url_for('video.delete') }}">删除视频</a></li>
+        <li><a href="{{ url_for('video.all_video',page=1) }}">所有视频</a></li>
+        {% for video in videos %}
+        <li><a href="{{ url_for('video.show_video',id=video.id,page=1) }}">{{ video.title }}</a></li>
+        {% endfor %}
+        {% else %}
+
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>上传视频</title>
+{% endblock %}
+{% block content %}
+<div>
+    <form method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>{{ form.video() }}</p>
+        <p>视频标题：{{ form.title() }}</p>
+        <p>分区：{{ form.tag }}</p>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

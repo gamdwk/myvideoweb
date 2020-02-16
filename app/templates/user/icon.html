@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>更换头像</title>
+{% endblock %}
+{% block content %}
+<div>
+    <form action="" method="post" name="icon" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>{{ form.icon(size=30) }}</p>
+        {{ form.csrf_token }}
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>所有视频</title>
+{% endblock %}
+{% block content %}
+<div>
+    {% from 'paginate.html' import paginate as pg %}
+    <ul>
+        {% for video in pagination.items %}
+        <li><a href={{ url_for('video.show_video',id=video.id,page=1) }}>{{ video.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {{ pg(pagination,'video.all_video') }}
+</div>
+{% endblock %}

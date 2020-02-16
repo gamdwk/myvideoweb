@@ -1,0 +1,17 @@
+{% extends 'admin/adminbase.html' %}
+{% block con %}
+<div>
+    {% from 'paginate.html' import paginate as pg %}
+    <div>
+        <form action='{{ url_for(' admin.comment
+        ',id=id,page=pagination.page) }}' method="post">
+        {% for item in pagination.items %}
+        <input type="checkbox" name="select" value={{ item.get_id() }}>
+        {{ item.body }}
+        {% endfor %}
+        <button type="submit" onclick="return confirm('你确定要批量删除吗？');" value='批量删除'></button>
+        </form>
+    </div>
+    {{ pg(pagination,'admin.comment',id=id) }}
+</div>
+{% endblock %}

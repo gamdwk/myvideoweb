@@ -1,0 +1,55 @@
+img.head {
+    width: 36px;
+    height: 36px;
+}
+
+
+#head ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#head li {
+    float: left;
+}
+
+#head a {
+    display: block;
+    background-color: pink;
+    color: white;
+    width: 80px;
+    text-align: center;
+    padding: 4px 0px;
+    text-decoration: none;
+}
+
+#head a:link {
+    display: block;
+    background-color: pink;
+    color: white;
+    width: 80px;
+    text-align: center;
+    padding: 4px 0px;
+    text-decoration: none;
+}
+
+#head a:visited {
+    display: block;
+    background-color: pink;
+    color: white;
+    width: 80px;
+    text-align: center;
+    padding: 4px 0px;
+    text-decoration: none;
+}
+
+#head a:hover {
+    background-color: gray;
+}
+
+#head a:active {
+    background-color: gray;
+}
+

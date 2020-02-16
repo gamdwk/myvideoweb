@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block title %}
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>视频</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='DPlayer/dist/DPlayer.min.css') }}">
+<script src="{{ url_for(" static", filename="DPlayer/plugin/flv.min.js") }}"></script>
+<
+script
+src = "{{ url_for("
+static
+", filename="
+DPlayer / plugin / hls.min.js
+") }}" ></script>
+<style>
+    .dplayer-comment-setting-type > label {
+        display: inline;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div id="dplayer" style="height: 500px; width: 774px;"></div>
+<div>
+    <p>{{ video.title }}</p>
+</div>
+<div>
+    <a href="#" id="like-{{ id }}" name="iconfont like">
+        <i class="iconfont like">点赞</i>
+    </a>
+</div>
+<script>
+    $("#like-{{ id }}").click(function () {
+        if (this.name == "iconfont like") {
+            this.innerHTML = "<i class='iconfont unlike'></i>"
+            this.name = "iconfont unlike";
+            let url = "{{ url_for('video.make_likes',id=id) }}";
+            let data_dic = {
+                'like': '1',
+                'video': '{{ id }}'
+            };
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: JSON.stringify(data_dic),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+                success: function (data) {
+                    window.history.back();
+                }
+            })
+        } else {
+            this.innerHTML = this.innerHTML = "<i class='iconfont like'></i>"
+            this.name = "iconfont like";
+            let likes = '-1';
+            let url = "{{ url_for('video.make_likes',id=id) }}";
+            let data_dic = {
+                'like': likes,
+                'video': '{{ id }}'
+            };
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: JSON.stringify(data_dic),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+                success: function (data) {
+                    window.history.back();
+                }
+            })
+        }
+    });
+</script>
+<div>
+    {% from 'paginate.html' import paginate as pg %}
+    {% for comment in pagination.items %}
+    <div>
+        <a href="{{ url_for('user.show_user',id=comment.user_id) }}">
+            <img class="head" src="{{ url_for('static',filename='pic/userhead/'+comment.getuser().icon) }}">
+        </a>
+        {{ comment.getuser().nickname }}
+        <p>{{ comment.body }}</p>
+    </div>
+    {% endfor %}
+    {{ pg(pagination,'video.show_video',id=id) }}
+</div>
+<div>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.comment }}
+        {{ form.submit }}
+    </form>
+</div>
+<script src="{{ url_for('static',filename='DPlayer/dist/DPlayer.min.js') }}"></script>
+<script>
+    const dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        video: {
+            url: "{{ url_for('static',filename=filename)}}"
+        },
+        danmaku: {
+            id: "{{ url_for('static',filename=filename)}}",
+            api: 'https://dplayer.moerats.com/',
+            addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]'],
+        }
+    });
+</script>
+{% endblock %}

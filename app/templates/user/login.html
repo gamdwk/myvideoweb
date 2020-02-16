@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+<title>登录</title>
+{% endblock %}
+{% block content %}
+<h1>登录</h1>
+<div>
+    <form action="" method="post" name="login">
+        {{ form.hidden_tag() }}
+        <p>
+            请输入用户名<br>
+            {{ form.username(size=20) }}
+        </p>
+        <p>
+            输入密码<br>
+            {{ form.password(size=20) }}
+        </p>
+        <p>
+            {{ form.remember_me }}记住我
+        </p>
+        <p>
+            {{ form.submit }}
+        </p>
+    </form>
+    <div><a href="/register">去注册</a></div>
+</div>
+{% endblock %}

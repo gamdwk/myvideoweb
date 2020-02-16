@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>你好！{{ user }}</title>
+{% endblock %}
+{% block content %}
+<div>
+    <ul>
+        <li><a href="{{ url_for('admin.user',page=1) }}">用户管理</a></li>
+        <li><a href="{{ url_for('admin.video',page=1) }}">视频管理</a></li>
+    </ul>
+</div>
+{% block con %}{% endblock %}
+{% endblock %}

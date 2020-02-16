@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>所有用户</title>
+{% endblock %}
+{% block content %}
+<div>
+    {% from 'paginate.html' import paginate as pg %}
+    <ul>
+        {% for user in pagination.items %}
+        <li><a href={{ url_for('user.show_user',id=user.id) }}>{{ user.nickname }}</a></li>
+        {% endfor %}
+    </ul>
+    {{ pg(pagination,'user.all_user') }}
+</div>
+{% endblock %}
