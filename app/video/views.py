@@ -31,8 +31,10 @@ def show_video(id, page=1):
         else:
             flash('发表失败')
     pagination = v.comments.paginate(page=page, per_page=5)
+    tag = Tag.query.filter_by(id=v.tag_id).first().name
     return render_template(
-        'video/video.html', filename=filename, form=form, pagination=pagination, id=id, video=v)
+        'video/video.html', filename=filename, form=form,tag = tag,
+        pagination=pagination, id=id, video=v)
 
 
 @video.route('/video/upload', methods=['GET', 'POST'])

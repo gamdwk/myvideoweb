@@ -9,7 +9,8 @@
         <input type="checkbox" name="select" value={{ item.get_id() }}>
         <a href={{ url_for('user.show_user',id=item.id) }}>{{ item.username }}</a>
         {% endfor %}
-        <button type="submit" onclick="return confirm('你确定要批量删除吗？');" value='批量删除'></button>
+        <button type="submit" onclick="return confirm('你确定要批量删除吗？');" name='sub' value='批量删除'>批量删除</button>
+        <button type="submit" onclick="return confirm('你确定要设置他们为管理吗？');" name="sub" value='批量设置'>批量设置</button>
         </form>
     </div>
     {{ pg(pagination,'admin.user') }}

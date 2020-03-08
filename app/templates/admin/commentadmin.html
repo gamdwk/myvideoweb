@@ -9,7 +9,7 @@
         <input type="checkbox" name="select" value={{ item.get_id() }}>
         {{ item.body }}
         {% endfor %}
-        <button type="submit" onclick="return confirm('你确定要批量删除吗？');" value='批量删除'></button>
+        <button type="submit" onclick="return confirm('你确定要批量删除吗？');" value='批量删除'>批量删除</button>
         </form>
     </div>
     {{ pg(pagination,'admin.comment',id=id) }}

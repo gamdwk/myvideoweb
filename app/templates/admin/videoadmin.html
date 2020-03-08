@@ -10,7 +10,7 @@
         <a href={{ url_for('video.show_video',id=item.id,page=1) }}>{{ item.title }}</a>
         <a href="{{ url_for('admin.comment',id=item.id,page=1) }}">展示评论</a>
         {% endfor %}
-        <button type="submit" onclick="return confirm('你确定要批量删除吗？');" value='批量删除'></button>
+        <button type="submit" onclick="return confirm('你确定要批量删除吗？');" value='批量删除'>批量删除</button>
         </form>
     </div>
     {{ pg(pagination,'admin.video') }}

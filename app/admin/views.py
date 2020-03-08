@@ -25,12 +25,17 @@ def user(page=1):
             for u_id in u_ids:
                 u = User.query.get(int(u_id))
                 try:
-                    db.session.delete(u)
-                    db.session.commit()
-                    flash(u.username + '删除成功')
+                    if request.values.get('sub')=="批量删除":
+                        db.session.delete(u)
+                        db.session.commit()
+                        flash(u.username + '删除成功')
+                    else:
+                        u.role = 'admin'
+                        db.session.commit()
+                        flash(u.username + '设置成功')
                 except Exception as e:
                     db.session.rollback()
-                    flash(u.username + '删除失败')
+                    flash(u.username + '失败')
         pagination = User.query.filter().paginate(page=page, per_page=5)
         return render_template('admin/useradmin.html', pagination=pagination)
     else:

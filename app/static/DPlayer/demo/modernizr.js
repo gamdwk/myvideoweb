@@ -435,9 +435,9 @@
     !*/
     /* DOC
     Detects support for the video element, as well as testing what types of content it supports.
-
+    
     Subproperties are provided to describe support for `ogg`, `h264` and `webm` formats, e.g.:
-
+    
     ```javascript
     Modernizr.video         // true
     Modernizr.video.ogg     // 'probably'

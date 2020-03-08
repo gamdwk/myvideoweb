@@ -17,7 +17,7 @@ img.head {
 
 #head a {
     display: block;
-    background-color: pink;
+    background-color: grey;
     color: white;
     width: 80px;
     text-align: center;
@@ -27,7 +27,7 @@ img.head {
 
 #head a:link {
     display: block;
-    background-color: pink;
+    background-color: grey;
     color: white;
     width: 80px;
     text-align: center;
@@ -37,7 +37,7 @@ img.head {
 
 #head a:visited {
     display: block;
-    background-color: pink;
+    background-color: grey;
     color: white;
     width: 80px;
     text-align: center;
