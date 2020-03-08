@@ -3,7 +3,7 @@ SECRET_KEY = 'stn-boo'
 
 # 配置flask_sqlalchemy
 username = 'root'
-password = '123888.hh'
+password = 'root'
 SQLALCHEMY_ECHO = False
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://' + username + ':' + password + '@localhost:3306/videoweb?charset=utf8mb4'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
